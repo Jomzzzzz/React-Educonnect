@@ -5,6 +5,7 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: import.meta.env.VITE_BASE_PATH || '/React-Educonnect',
   build: {
     // Increase warning limit a bit while we split chunks; adjust as needed
     chunkSizeWarningLimit: 800,
