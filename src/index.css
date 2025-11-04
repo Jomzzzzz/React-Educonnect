@@ -1,0 +1,73 @@
+/* src/index.css */
+@import "tailwindcss";
+
+/* Global HTML settings */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global body styles (plain CSS, not @apply) */
+body {
+  background-color: #ffffff;
+  color: #111827; /* tailwind gray-900 */
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+               "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin: 0;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Global link reset / behavior */
+a {
+  color: #2563eb; /* tailwind blue-600 */
+  text-decoration: none;
+  transition: color 160ms ease-in-out;
+}
+a:hover,
+a:focus {
+  color: #1e40af; /* tailwind blue-800 */
+  outline: none;
+}
+
+/* Reusable container utility (CSS version) */
+.container {
+  max-width: 1120px; /* similar to max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;  /* px-4 */
+  padding-right: 1rem; /* px-4 */
+}
+@media (min-width: 640px) {
+  .container { padding-left: 1.5rem; padding-right: 1.5rem; } /* sm:px-6 */
+}
+@media (min-width: 1024px) {
+  .container { padding-left: 2rem; padding-right: 2rem; } /* lg:px-8 */
+}
+
+/* Small utility classes for fallback of commonly used things */
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+  border: 0; padding: 0; margin: -1px;
+}
+
+/* Optional: make images responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-in-out;
+}
