@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import studentImg from "../assets/student.png";
+import AuthModal from "./AuthModal"; // import your latest AuthModal
 
 export default function Hero() {
-  const [showModal, setShowModal] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   return (
     <section
@@ -22,7 +23,7 @@ export default function Hero() {
         </p>
         <div>
           <button
-            onClick={() => setShowModal(true)}
+            onClick={() => setShowAuthModal(true)}
             className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition duration-300"
           >
             Join Class
@@ -43,37 +44,12 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Sign In Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl shadow-xl p-8 w-96 relative">
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-            >
-              ✕
-            </button>
-            <h2 className="text-2xl font-bold mb-4 text-center">Sign In</h2>
-            <form className="space-y-4">
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full px-4 py-2 border rounded-lg"
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                className="w-full px-4 py-2 border rounded-lg"
-              />
-              <button
-                type="submit"
-                className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 rounded-lg"
-              >
-                Sign In
-              </button>
-            </form>
-          </div>
-        </div>
+      {/* Auth Modal */}
+      {showAuthModal && (
+        <AuthModal
+          isOpen={showAuthModal}
+          onClose={() => setShowAuthModal(false)}
+        />
       )}
     </section>
   );

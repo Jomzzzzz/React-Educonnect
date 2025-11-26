@@ -3,8 +3,9 @@
 // ==========================================================
 
 const BASE_URL =
-  import.meta.env.VITE_API_BASE_URL?.replace(/\/+$/, "") ||
-  "http://localhost/educonnect-backend";
+  (import.meta.env.VITE_API_BASE_URL
+    ? import.meta.env.VITE_API_BASE_URL.replace(/\/+$/, "")
+    : "http://localhost/educonnect-backend");
 
 /* ----------------------------------------------------------
    🧩 Core Helpers
@@ -99,6 +100,39 @@ export async function uploadFile(endpoint, formData) {
 export const fetchLessonsByGrade = (grade_id) =>
   getJSON("api/get_lessons.php", { grade: grade_id });
 
+// ==========================================================
+// NEW: Functions for Grade -> Subject -> Topic flow
+// ==========================================================
+
+/**
+ * 🧑‍🏫 Fetch all available subjects for a specific grade.
+ * dinagdag ko to pre
+ */
+export const fetchSubjectsByGrade = (gradeId) =>
+  getJSON("api/get_subjects.php", { grade_id: gradeId });
+
+/**
+ * 📖 Fetch recommended topics (lessons) for a specific subject.
+ * This is the "AI" endpoint that provides the correct difficulty.
+ * inedit ko to pre
+ */
+// src/utils/api.js
+
+// ... previous code ...
+
+// 🆕 UPDATED: Added context param (defaults to 'lesson')
+export const fetchTopicsBySubject = async (subjectId, studentId, grade, context = 'lesson') => {
+  return await getJSON("api/get_recommended_topics.php", { 
+    subject_id: subjectId, 
+    student_id: studentId,
+    grade_id: grade,
+    context: context // Pass it to PHP
+  });
+};
+
+// ... rest of code ...
+// =Gg========================================================
+// (End of new functions)
 /**
  * 📖 Get specific lesson details.
  */
@@ -131,7 +165,12 @@ export const getLessonQuiz = (lessonId) =>
  */
 export const getQuizQuestions = (quizId) =>
   getJSON("api/get_quiz_questions.php", { quiz_id: quizId });
-
+/**
+ * 👋 Get the AI Welcome Message for Dashboard.
+ * Points to api/get_dashboard_welcome.php
+ */
+export const getDashboardWelcome = (studentId) =>
+  getJSON("api/get_dashboard_welcome.php", { student_id: studentId });
 /**
  * 🚀 Submit quiz answers for grading and saving.
  * Backend automatically calculates correct/wrong answers,

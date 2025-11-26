@@ -1,5 +1,3 @@
-// src/components/EditProfileModal.jsx
-
 import { useState, useEffect } from "react";
 import { postJSON, uploadFile } from "/utils/api";
 
@@ -40,29 +38,37 @@ export default function EditProfileModal({ isOpen, onClose, user, onSave }) {
     try {
       let res;
 
-      // If user selected a new image, use FormData
       if (avatar) {
+        // File upload
         const formData = new FormData();
         if (fullName.trim()) formData.append("full_name", fullName.trim());
         if (email.trim()) formData.append("email", email.trim());
         if (password.trim()) formData.append("password", password.trim());
         formData.append("profile_image", avatar);
 
-        res = await uploadFile("update-profile.php", formData);
+        res = await uploadFile("update_profile.php", formData);
       } else {
-        // Otherwise, send JSON
+        // JSON request
         const payload = {};
         if (fullName.trim()) payload.full_name = fullName.trim();
         if (email.trim()) payload.email = email.trim();
         if (password.trim()) payload.password = password.trim();
 
-        res = await postJSON("update-profile.php", payload);
+        res = await postJSON("update_profile.php", payload);
       }
 
       if (res.success) {
-        onSave(res.user);
+        const updatedUser = {
+          ...user,
+          full_name: res.user.full_name || fullName,
+          email: res.user.email || email,
+          avatar_url: res.user.avatar_url || user.avatar_url,
+        };
+        onSave(updatedUser);
+
         setMessage("✅ Profile updated successfully!");
         setPassword("");
+        setAvatar(null);
         setTimeout(() => onClose(), 1200);
       } else {
         setMessage(`⚠️ ${res.message || "Update failed."}`);

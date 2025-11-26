@@ -39,128 +39,126 @@ export default function LandingPage() {
         <Hero onOpenAuth={openAuth} />
       </div>
 
-      {/* LESSONS PREVIEW SECTION */}
-      <section
-        ref={lessonsRef}
-        className="bg-linear-to-br from-blue-50 to-white py-20 px-6"
-      >
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-blue-700 mb-4">
-            AI-Powered Interactive Lessons
-          </h2>
-          <p className="text-gray-600 mb-12">
-            Experience smart, engaging lessons that adapt to your skill level —
-            built around the Philippine K-12 curriculum.
-          </p>
+    {/* LESSONS PREVIEW SECTION */}
+<section
+  ref={lessonsRef}
+  className="bg-linear-to-br from-blue-50 to-white py-20 px-6"
+>
+  <div className="max-w-6xl mx-auto text-center">
+    <h2 className="text-4xl font-bold text-blue-700 mb-4">
+      Unlock Your AI-Powered Lessons
+    </h2>
+    <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
+      Dive into smart, interactive lessons designed for K-12 students. Track your progress, get AI feedback, and stay ahead in every subject.
+    </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <LessonCard
-              icon={<BookOpen className="text-blue-700" size={36} />}
-              title="Science Adventure"
-              description="Explore fun, interactive science lessons with visuals, videos, and adaptive learning paths."
-            />
-            <LessonCard
-              icon={<Download className="text-green-600" size={36} />}
-              title="Offline Learning"
-              description="Download lessons and study anytime, even without an internet connection."
-            />
-            <LessonCard
-              icon={<Star className="text-yellow-500" size={36} />}
-              title="Earn Stars & Rewards"
-              description="Complete lessons to earn stars and unlock fun achievements as you progress!"
-            />
-          </div>
+    <div className="grid md:grid-cols-3 gap-8">
+      <LessonCard
+        icon={<BookOpen className="text-blue-700" size={36} />}
+        title="Math & Science Mastery"
+        description="Engage with interactive math and science lessons, complete with worksheets and visual explanations."
+      />
+      <LessonCard
+        icon={<Download className="text-green-600" size={36} />}
+        title="Offline Learning"
+        description="Download lessons and practice anywhere, anytime — no internet needed!"
+      />
+      <LessonCard
+        icon={<Star className="text-yellow-500" size={36} />}
+        title="Personalized Progress"
+        description="AI recommends topics to focus on based on your weaknesses and strengths."
+      />
+    </div>
 
-          <button
-            onClick={() => openAuth("register")}
-            className="mt-10 px-6 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800"
-          >
-            Start Learning Today
-          </button>
-        </div>
-      </section>
+    <button
+      onClick={() => openAuth("register")}
+      className="mt-10 px-6 py-3 bg-blue-700 text-white rounded-xl shadow-lg hover:bg-blue-800 transition transform hover:scale-105"
+    >
+      Continue Learning Now
+    </button>
+  </div>
+</section>
 
-      {/* QUIZZES PREVIEW SECTION */}
-      <section
-        ref={quizzesRef}
-        className="bg-white py-20 px-6 border-t border-gray-200"
-      >
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-green-700 mb-4">
-            Gamified Quizzes & Mini-Games
-          </h2>
-          <p className="text-gray-600 mb-12">
-            Test your knowledge through exciting, interactive quizzes designed
-            to challenge and reward you.
-          </p>
+{/* QUIZZES PREVIEW SECTION */}
+<section
+  ref={quizzesRef}
+  className="bg-white py-20 px-6 border-t border-gray-200"
+>
+  <div className="max-w-6xl mx-auto text-center">
+    <h2 className="text-4xl font-bold text-green-700 mb-4">
+      Test Yourself with Fun Quizzes
+    </h2>
+    <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
+      Challenge your knowledge with interactive quizzes and mini-games. Earn badges, track your weak topics, and stay motivated.
+    </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <QuizCard
-              icon={<Trophy className="text-yellow-500" size={36} />}
-              title="Level-Based Quizzes"
-              description="AI adjusts difficulty based on your previous performance for continuous improvement."
-            />
-            <QuizCard
-              icon={<Star className="text-blue-600" size={36} />}
-              title="Earn Badges"
-              description="Collect badges as you master topics and improve your skills."
-            />
-            <QuizCard
-              icon={<BookOpen className="text-green-600" size={36} />}
-              title="Mini-Games"
-              description="Learn while playing educational mini-games designed for engagement and retention."
-            />
-          </div>
+    <div className="grid md:grid-cols-3 gap-8">
+      <QuizCard
+        icon={<Trophy className="text-yellow-500" size={36} />}
+        title="Adaptive Quizzes"
+        description="AI adjusts difficulty based on your previous answers to maximize learning."
+      />
+      <QuizCard
+        icon={<Star className="text-blue-600" size={36} />}
+        title="Collect Badges"
+        description="Earn badges and rewards as you master each topic."
+      />
+      <QuizCard
+        icon={<BookOpen className="text-green-600" size={36} />}
+        title="Mini-Games"
+        description="Learn through gamified activities designed to boost retention."
+      />
+    </div>
 
-          <button
-            onClick={() => openAuth("register")}
-            className="mt-10 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700"
-          >
-            Take a Quiz
-          </button>
-        </div>
-      </section>
+    <button
+      onClick={() => openAuth("register")}
+      className="mt-10 px-6 py-3 bg-green-600 text-white rounded-xl shadow-lg hover:bg-green-700 transition transform hover:scale-105"
+    >
+      Take a Quiz Now
+    </button>
+  </div>
+</section>
 
-      {/* PROGRESS PREVIEW SECTION */}
-      <section
-        ref={progressRef}
-        className="bg-linear-to-t from-gray-50 to-white py-20 px-6 border-t border-gray-100"
-      >
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-blue-700 mb-4">
-            Track Your Progress & Achievements
-          </h2>
-          <p className="text-gray-600 mb-12">
-            Stay motivated with visual progress charts, AI feedback, and
-            parent-accessible reports.
-          </p>
+{/* PROGRESS PREVIEW SECTION */}
+<section
+  ref={progressRef}
+  className="bg-linear-to-t from-gray-50 to-white py-20 px-6 border-t border-gray-100"
+>
+  <div className="max-w-6xl mx-auto text-center">
+    <h2 className="text-4xl font-bold text-blue-700 mb-4">
+      Track Your Progress & Achievements
+    </h2>
+    <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
+      Visualize your learning journey with smart charts, see which subjects need attention, and earn trophies for your achievements.
+    </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <ProgressCard
-              icon={<BarChart className="text-blue-700" size={36} />}
-              title="Smart Progress Tracking"
-              description="See how you’re improving with AI-powered performance analytics."
-            />
-            <ProgressCard
-              icon={<Star className="text-yellow-500" size={36} />}
-              title="Achievements & Rewards"
-              description="Earn trophies and celebrate milestones as you complete lessons and quizzes."
-            />
-            <ProgressCard
-              icon={<BookOpen className="text-green-600" size={36} />}
-              title="Parent Dashboard"
-              description="Parents can monitor progress and quiz results securely via a PIN-protected dashboard."
-            />
-          </div>
+    <div className="grid md:grid-cols-3 gap-8">
+      <ProgressCard
+        icon={<BarChart className="text-blue-700" size={36} />}
+        title="Smart Progress Tracking"
+        description="AI-powered insights show which topics you need to review or strengthen."
+      />
+      <ProgressCard
+        icon={<Star className="text-yellow-500" size={36} />}
+        title="Achievements & Rewards"
+        description="Earn stars and trophies as you complete lessons and quizzes."
+      />
+      <ProgressCard
+        icon={<BookOpen className="text-green-600" size={36} />}
+        title="Parent Dashboard"
+        description="Parents can track progress securely and help students improve efficiently."
+      />
+    </div>
 
-          <button
-            onClick={() => openAuth("register")}
-            className="mt-10 px-6 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800"
-          >
-            Sign Up to Track Your Growth
-          </button>
-        </div>
-      </section>
+    <button
+      onClick={() => openAuth("register")}
+      className="mt-10 px-6 py-3 bg-blue-700 text-white rounded-xl shadow-lg hover:bg-blue-800 transition transform hover:scale-105"
+    >
+      Sign Up to Track Your Growth
+    </button>
+  </div>
+</section>
+
 
       {/* Auth Modal */}
       <AuthModal

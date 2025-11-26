@@ -28,7 +28,7 @@ export default function Navbar({ onOpenAuth, scrollToSection }) {
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 lg:px-10">
         {/* Brand */}
         <div
-          className="text-2xl font-extrabold text-blue-700 cursor-pointer hover:scale-105 transition-transform"
+          className="text-2xl font-extrabold text-blue-600 cursor-pointer hover:scale-105 transition-transform"
           onClick={() => scrollToSection("home")}
         >
           EduConnect
@@ -103,7 +103,7 @@ export default function Navbar({ onOpenAuth, scrollToSection }) {
                 setMenuOpen(false);
                 onOpenAuth("register");
               }}
-              className="w-4/5 px-4 py-2 bg-blue-700 text-white rounded-md"
+              className="w-4/5 px-4 py-2 bg-blue-600 text-white rounded-md"
             >
               Sign Up
             </button>

@@ -2,17 +2,16 @@ import { useEffect, useState, useCallback } from "react";
 import YouTube from "react-youtube";
 import { getLessonDetails, markLessonComplete } from "/utils/api";
 
-export default function LessonModal({ lessonId, onClose, onMarkComplete }) {
+export default function LessonModal({ lessonId, onClose, onMarkComplete, initialCompleted, isRetake }) { // 👈 Add isRetake
   const [lesson, setLesson] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [completed, setCompleted] = useState(false);
+ const [completed, setCompleted] = useState(initialCompleted); // CORRECT
 
   const fetchLesson = useCallback(async () => {
     setLoading(true);
     const res = await getLessonDetails(lessonId);
     if (res.success && res.lesson) {
       setLesson(res.lesson);
-      setCompleted(res.lesson.completed);
     }
     setLoading(false);
   }, [lessonId]);
@@ -116,12 +115,24 @@ export default function LessonModal({ lessonId, onClose, onMarkComplete }) {
               </div>
             )}
 
-            {/* ✅ Completion Feedback */}
-            {completed && (
-              <div className="mt-4 text-green-600 font-medium text-center">
-                ✅ Lesson completed successfully!
-              </div>
-            )}
+            {/* Baguhin ang logic ng message */}
+
+{completed ? (
+    <div className="bg-green-100 text-green-700 p-3 rounded-lg flex items-center gap-2 mt-4">
+        {/* 👇 CUSTOM MESSAGE KAPAG RETAKE 👇 */}
+        {isRetake 
+            ? "↺ You have re-watched the video. Good luck on the quiz!" 
+            : "✅ Lesson completed successfully!"
+        }
+    </div>
+) : (
+    // Optional: Pwede ka rin maglagay ng message habang nanonood pa lang
+    isRetake && (
+        <div className="bg-amber-50 text-amber-700 p-3 rounded-lg text-sm mt-4">
+            💡 <strong>Review Mode:</strong> Watch this video again to unlock the quiz.
+        </div>
+    )
+)}
           </>
         ) : (
           <p>Lesson not found.</p>

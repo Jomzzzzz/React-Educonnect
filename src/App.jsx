@@ -7,7 +7,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "../utils/useAuth";
 import LandingPage from "./components/LandingPage";
 import AuthModal from "./components/AuthModal";
-
+import AdminQuizzes from "/pages/AdminQuizzes"; // Adjust path if needed
 // ✅ NEW IMPORTS
 import Quizzes from "./components/Quizzes";
 import Progress from "./components/Progress"; // 👈 Added Progress page
@@ -59,13 +59,13 @@ export default function App() {
 
         {/* 🎓 Student Dashboard */}
         <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute roles={["student", "teacher", "parent", "admin"]}>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
+  path="/dashboard"
+  element={
+    <ProtectedRoute roles={["student", "teacher", "parent", "admin"]}>
+      <Dashboard user={user} /> {/* <-- ADD user={user} HERE */}
+    </ProtectedRoute>
+  }
+/>
 
         {/* 🧑‍🏫 Admin Panel */}
         <Route
@@ -86,6 +86,15 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        {/* 🆕 🧑‍🏫 Admin Panel - Quizzes */}
+<Route
+  path="/admin/quizzes"
+  element={
+    <ProtectedRoute roles={["admin"]}>
+      <AdminQuizzes />
+    </ProtectedRoute>
+  }
+/>
 
         {/* ✅ Quizzes Tab */}
         <Route
